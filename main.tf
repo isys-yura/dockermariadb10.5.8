@@ -67,9 +67,9 @@ resource "kubernetes_deployment" "mysql" {
   }
 }
 
-resource "kubernetes_persistent_volume_claim" "claim-db-volume" {
+resource "kubernetes_persistent_volume_claim" "claim-db" {
   metadata {
-    name = "claim-db-volume"
+    name = "claim-db"
   }
   spec {
     access_modes = ["ReadWriteMany"]
@@ -82,9 +82,9 @@ resource "kubernetes_persistent_volume_claim" "claim-db-volume" {
   }
 }
 
-resource "kubernetes_persistent_volume" "claim-db" {
+resource "kubernetes_persistent_volume" "claim-db-volume" {
   metadata {
-    name = "claim-db"
+    name = "claim-db-volume"
   }
   spec {
     capacity = {

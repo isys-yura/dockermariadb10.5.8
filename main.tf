@@ -78,6 +78,7 @@ resource "kubernetes_persistent_volume_claim" "claim-db-volume" {
         storage = "1Gi"
       }
     }
+    storage_class_name = "fast"
   }
 }
 

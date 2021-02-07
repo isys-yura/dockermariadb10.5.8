@@ -94,6 +94,8 @@ resource "kubernetes_persistent_volume" "claim-db" {
     persistent_volume_source {
       host_path {
         path = "/mnt/data"
+      }
     }
   }
 }
+

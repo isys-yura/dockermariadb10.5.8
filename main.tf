@@ -51,11 +51,6 @@ resource "kubernetes_deployment" "mysql" {
           port {
             container_port = 3306
           }
-          args = ["--ignore-db-dir=lost+found"]
-          env {
-            name = "MYSQL_ROOT_PASSWORD"
-            value = "YjdsqGfhjkm123"
-          }
           volume_mount {
             name = "db-storage"
             mount_path = "/var/lib/mysql"
@@ -83,9 +78,6 @@ resource "kubernetes_persistent_volume_claim" "claim-db-volume" {
         storage = "1Gi"
       }
     }
-    host_path {
-      path = "/mnt/data"
-    }
   }
 }
 
@@ -99,5 +91,9 @@ resource "kubernetes_persistent_volume" "claim-db" {
     }
     storage_class_name = "fast"
     access_modes = ["ReadWriteMany"]
+    persistent_volume_source {
+      host_path {
+        path = "/mnt/data"
+    }
   }
 }

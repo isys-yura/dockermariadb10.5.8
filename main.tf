@@ -51,6 +51,10 @@ resource "kubernetes_deployment" "mysql" {
           port {
             container_port = 3306
           }
+          env {
+            name = "MYSQL_ROOT_PASSWORD"
+            value = "YjdsqGfhjkm123"
+          }
           volume_mount {
             name = "db-storage"
             mount_path = "/var/lib/mysql"

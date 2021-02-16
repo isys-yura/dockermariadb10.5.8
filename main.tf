@@ -28,6 +28,7 @@ resource "kubernetes_deployment" "mysql" {
   }
 
   spec {
+    replicas = 2
     selector {
       match_labels = {
         app = "mysql"
